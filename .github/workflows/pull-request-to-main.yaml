@@ -1,0 +1,26 @@
+name: Pull Request to Main
+
+on:
+  pull_request:
+    types: [opened, reopened]
+    branches: ["main"]
+
+jobs:
+  "Quality Checks":
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          node-version: "16"
+      - name: Run API Tests
+        run: echo "Quality Checks Complete!"
+
+  "API Tests":
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+      - name: Run API Tests
+        run: echo "API Tests Complete!"
