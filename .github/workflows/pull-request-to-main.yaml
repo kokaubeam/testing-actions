@@ -6,7 +6,7 @@ on:
     branches: ["main"]
 
 jobs:
-  "Quality Checks":
+  quality-checks:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
@@ -16,7 +16,7 @@ jobs:
       - name: Run API Tests
         run: echo "Quality Checks Complete!"
 
-  "API Tests":
+  api-tests:
     runs-on: ubuntu-latest
     timeout-minutes: 15
     steps:
