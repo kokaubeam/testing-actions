@@ -6,7 +6,7 @@ on:
       - "main"
 
 jobs:
-  "Deploy to Development":
+  deploy-to-development:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
@@ -18,7 +18,7 @@ jobs:
       - name: Deploy
         run: echo "Deployed to Development!"
 
-  "Deploy to Staging":
+  deploy-to-staging:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
