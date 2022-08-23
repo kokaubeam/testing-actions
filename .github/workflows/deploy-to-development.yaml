@@ -1,12 +1,13 @@
-name: Release
+name: Deploy to Development
 
 on:
-  release:
-    types: [published]
+  workflow_dispatch:
+  push:
+    branches: ["main"]
 
 jobs:
-  deploy-to-production:
-    name: "Deploy to Production"
+  deploy-to-development:
+    name: "Deploy to Development"
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
@@ -14,4 +15,4 @@ jobs:
         with:
           node-version: "16"
       - name: Deploy
-        run: echo "Deployed to Production!"
+        run: echo "Deployed to Development!"
