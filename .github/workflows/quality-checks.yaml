@@ -12,7 +12,6 @@ env:
 jobs:
   version-check:
     name: "Version Check"
-    id: version
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
@@ -20,9 +19,10 @@ jobs:
         with:
           node-version: "16"
       - name: Check if version has been updated
+        id: check
         uses: EndBug/version-check@v2.1.0
       - name: Verify that the version has been updated
-        if: steps.version.outputs.changed == 'false'
+        if: steps.check.outputs.changed == 'false'
         run: exit 1
 
   build:
