@@ -10,6 +10,21 @@ env:
   TITLE: "${{ github.event.pull_request.title || github.event.head_commit.message }}"
 
 jobs:
+  version-check:
+    name: "Version Check"
+    id: version
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          node-version: "16"
+      - name: Check if version has been updated
+        uses: EndBug/version-check@v2.1.0
+      - name: Verify that the version has been updated
+        if: steps.version.outputs.changed == 'false'
+        run: exit 1
+
   build:
     name: "Build"
     runs-on: ubuntu-latest
