@@ -6,9 +6,10 @@ on:
     types: [opened, reopened, synchronize]
     branches: ["main"]
 
+env:
+  TITLE: "${{ github.event.pull_request.title || github.event.head_commit.message }}"
+
 jobs:
-  env:
-    TITLE: "${{ github.event.pull_request.title || github.event.head_commit.message }}"
   build:
     name: "Build"
     runs-on: ubuntu-latest
